@@ -2,13 +2,93 @@
 <html>
 <head>
   <title>MyRiderID Internship Project Showcase</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #carousel-container {
+      position: relative;
+      width: 600px;
+      margin: 40px auto;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    #prevBtn {
+      left: 0;
+    }
+
+    #nextBtn {
+      right: 0;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+<body>
   <h1>Internship Projects Showcase</h1>
   <h2>MyRiderID System</h2>
-  <img src="assets/1.png" width="600" />
-  <img src="assets/2.png" width="600" />
-  <img src="assets/3.png" width="600" />
-  <img src="assets/4.png" width="600" />
+
+  <div id="carousel-container">
+    <button class="nav-button" id="prevBtn">&#10094;</button>
+    <img class="slide active" src="assets/1.png" alt="Slide 1" />
+    <img class="slide" src="assets/2.png" alt="Slide 2" />
+    <img class="slide" src="assets/3.png" alt="Slide 3" />
+    <img class="slide" src="assets/4.png" alt="Slide 4" />
+    <button class="nav-button" id="nextBtn">&#10095;</button>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    });
+  </script>
 </body>
 </html>
