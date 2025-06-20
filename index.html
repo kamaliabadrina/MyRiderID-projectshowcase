@@ -23,9 +23,8 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             padding: 2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: relative;
+            z-index: 10;
         }
 
         .header-content {
@@ -55,6 +54,27 @@
             max-width: 1000px;
             margin: 4rem auto;
             padding: 0 2rem;
+        }
+
+        .project-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-title h2 {
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .project-title {
@@ -187,48 +207,6 @@
             font-weight: 500;
         }
 
-        .features {
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .features h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card h4 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -292,14 +270,6 @@
     </header>
 
     <div class="main-container">
-        <div class="project-title">
-            <h2>System Overview</h2>
-            <p class="project-description">
-                A comprehensive rider identification and management system designed to streamline operations 
-                and enhance user experience through modern technology and intuitive design.
-            </p>
-        </div>
-
         <div class="slider-container">
             <div class="slider">
                 <div class="slides" id="slides">
