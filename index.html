@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyRiderID Internship Project Showcase</title>
+    <title>MyRiderID - Project Showcase</title>
     <style>
         * {
             margin: 0;
@@ -13,555 +13,555 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #fafafa;
-            color: #2c3e50;
             line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* Header Section */
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             color: white;
-            padding: 80px 0 60px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
             position: relative;
         }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        .section:nth-child(even) {
+            background: #f8fafc;
         }
 
-        .header-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .header h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 24px;
-        }
-
-        .header-description {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 80px 0;
+        .section:nth-child(odd) {
             background: white;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
         }
 
-        .section-title h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 16px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Project Gallery */
-        .project-gallery {
+        /* Feature Cards */
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            margin-bottom: 60px;
+            margin-top: 4rem;
         }
 
-        .project-card {
+        .feature-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
             overflow: hidden;
-            cursor: pointer;
-            border: 1px solid #e5e7eb;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
-            border-color: #d1d5db;
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
         }
 
-        .project-image {
-            width: 100%;
-            height: auto;
-            display: block;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            color: #718096;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            background: #1a202c;
+            color: white;
+        }
+
+        .screenshots .section-title {
+            color: white;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 4rem;
+        }
+
+        .screenshot-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
 
-        .project-card:hover .project-image {
+        .screenshot-item:hover {
             transform: scale(1.02);
         }
 
-        .project-info {
-            padding: 24px;
-            border-top: 1px solid #f3f4f6;
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .project-title {
-            font-size: 1.25rem;
+        .screenshot-info {
+            padding: 30px;
+            color: #2d3748;
+        }
+
+        .screenshot-info h3 {
+            font-size: 1.4rem;
             font-weight: 600;
-            color: #1f2937;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .screenshot-info ul {
+            list-style: none;
+            color: #718096;
+        }
+
+        .screenshot-info li {
             margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
         }
 
-        .project-description {
-            color: #6b7280;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .screenshot-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
         }
 
-        /* Stats Section */
-        .stats-section {
-            background: #f8fafc;
-            padding: 60px 0;
-            border-top: 1px solid #e5e7eb;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+        /* Tech Stack */
+        .tech-stack {
             text-align: center;
-        }
-
-        .stat-item {
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Technology Stack */
-        .tech-section {
-            padding: 80px 0;
-            background: white;
         }
 
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
         }
 
         .tech-item {
-            text-align: center;
-            padding: 24px 16px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-            transition: all 0.2s ease;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
         .tech-item:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
         }
 
-        .tech-icon {
-            width: 48px;
-            height: 48px;
-            background: #3b82f6;
-            border-radius: 8px;
-            margin: 0 auto 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+        .tech-item .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .tech-item h4 {
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1.2rem;
+            color: #2d3748;
         }
 
-        .tech-name {
-            font-weight: 500;
-            color: #374151;
-            font-size: 0.9rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            color: #374151;
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        .footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .footer-content {
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .header {
-                padding: 60px 0 40px;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header h2 {
-                font-size: 1.3rem;
-            }
-
-            .main-content {
-                padding: 60px 0;
-            }
-
-            .project-gallery {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-            }
-
-            .modal-close {
-                top: -40px;
-                width: 36px;
-                height: 36px;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.75rem;
-            }
-
-            .section-title h3 {
-                font-size: 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Subtle Animations */
-        .project-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="header-content">
-                <h1>Internship Project Showcase</h1>
-                <h2>MyRiderID System</h2>
-                <p class="header-description">A comprehensive digital identity and management system developed during my internship, featuring modern design principles and robust functionality.</p>
+            <div class="hero-content">
+                <h1>MyRiderID</h1>
+                <p class="subtitle">Smart QR Code Management System</p>
+                <p class="description">
+                    A comprehensive digital identity solution for motorcycle riders, enabling seamless QR code management, 
+                    emergency contact access, and enhanced safety features through modern web technology.
+                </p>
+                <a href="#features" class="cta-button">Explore Project</a>
             </div>
         </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <div class="section-title">
-                <h3>Project Overview</h3>
-                <p class="section-subtitle">Explore the key features and interfaces of the MyRiderID system, designed to streamline user management and provide comprehensive analytics.</p>
-            </div>
-
-            <div class="project-gallery">
-                <div class="project-card" data-image="assets/1.png">
-                    <img src="assets/1.png" alt="MyRiderID Dashboard Interface" class="project-image" loading="lazy">
-                    <div class="project-info">
-                        <h4 class="project-title">Dashboard Interface</h4>
-                        <p class="project-description">Comprehensive dashboard design featuring intuitive navigation, real-time metrics, and streamlined user experience for administrative tasks.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-image="assets/2.png">
-                    <img src="assets/2.png" alt="User Management System" class="project-image" loading="lazy">
-                    <div class="project-info">
-                        <h4 class="project-title">User Management</h4>
-                        <p class="project-description">Advanced user management interface with role-based access control, profile customization, and efficient user data organization.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-image="assets/3.png">
-                    <img src="assets/3.png" alt="Analytics Dashboard" class="project-image" loading="lazy">
-                    <div class="project-info">
-                        <h4 class="project-title">Analytics & Reporting</h4>
-                        <p class="project-description">Data visualization dashboard providing actionable insights, performance metrics, and comprehensive reporting capabilities.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-image="assets/4.png">
-                    <img src="assets/4.png" alt="Mobile Application" class="project-image" loading="lazy">
-                    <div class="project-info">
-                        <h4 class="project-title">Mobile Experience</h4>
-                        <p class="project-description">Responsive mobile interface ensuring seamless user experience across all devices with optimized touch interactions.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="scroll-indicator">
+            <div style="font-size: 1.5rem;">↓</div>
+            <div style="font-size: 0.9rem; margin-top: 5px;">Scroll to explore</div>
         </div>
-    </main>
+    </section>
 
-    <section class="stats-section">
+    <!-- Features Section -->
+    <section class="section" id="features">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Key Interfaces</div>
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏍️</div>
+                    <h3>Multi-Vehicle Management</h3>
+                    <p>Centralized dashboard allowing riders to manage multiple QR codes for different vehicles under one account, improving scalability and user experience.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Weeks Development</div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👤</div>
+                    <h3>Personalized Profiles</h3>
+                    <p>Comprehensive rider profiles with personal information, emergency contacts, medical conditions, and vehicle details for enhanced safety.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Mobile Responsive</div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Emergency Response</h3>
+                    <p>Quick access to critical information during emergencies, including medical conditions, blood type, and emergency contacts for first responders.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Technologies Used</div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h3>Modern Interface</h3>
+                    <p>Intuitive, responsive design that works seamlessly across all devices, providing an optimal user experience for both riders and emergency personnel.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="tech-section">
+    <!-- Screenshots Section -->
+    <section class="section screenshots">
         <div class="container">
-            <div class="section-title">
-                <h3>Technology Stack</h3>
-                <p class="section-subtitle">Built using modern technologies and frameworks to ensure scalability, performance, and maintainability.</p>
+            <h2 class="section-title">System Overview</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <div style="height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        Dashboard Overview
+                    </div>
+                    <div class="screenshot-info">
+                        <h3>Rider Dashboard</h3>
+                        <ul>
+                            <li>View all registered QR codes in one place</li>
+                            <li>Manage multiple vehicles efficiently</li>
+                            <li>Quick access to profile information</li>
+                            <li>Streamlined navigation interface</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <div style="height: 300px; background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        Profile Management
+                    </div>
+                    <div class="screenshot-info">
+                        <h3>Profile Information</h3>
+                        <ul>
+                            <li>Update personal and contact details</li>
+                            <li>Manage emergency contact information</li>
+                            <li>Medical information and conditions</li>
+                            <li>Real-time data synchronization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="screenshot-item">
+                    <div style="height: 300px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        Registration System
+                    </div>
+                    <div class="screenshot-info">
+                        <h3>User Registration</h3>
+                        <ul>
+                            <li>Comprehensive registration form</li>
+                            <li>Vehicle information collection</li>
+                            <li>Emergency contact setup</li>
+                            <li>Medical information entry</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Implementation</h2>
             <div class="tech-grid">
                 <div class="tech-item">
-                    <div class="tech-icon">H</div>
-                    <div class="tech-name">HTML5</div>
+                    <div class="tech-icon">🎨</div>
+                    <h4>Frontend Design</h4>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">C</div>
-                    <div class="tech-name">CSS3</div>
+                    <div class="tech-icon">⚙️</div>
+                    <h4>Backend Logic</h4>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">J</div>
-                    <div class="tech-name">JavaScript</div>
+                    <div class="tech-icon">🗄️</div>
+                    <h4>Database Design</h4>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">R</div>
-                    <div class="tech-name">React</div>
+                    <div class="tech-icon">📱</div>
+                    <h4>Responsive UI</h4>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">N</div>
-                    <div class="tech-name">Node.js</div>
+                    <div class="tech-icon">🔐</div>
+                    <h4>Security Features</h4>
                 </div>
                 <div class="tech-item">
-                    <div class="tech-icon">D</div>
-                    <div class="tech-name">Database</div>
+                    <div class="tech-icon">🚀</div>
+                    <h4>Performance</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 MyRiderID Internship Project. Developed with passion and dedication.</p>
+    <!-- Project Impact -->
+    <section class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title" style="color: white;">Project Impact</h2>
+            <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+                <p style="margin-bottom: 2rem;">
+                    MyRiderID represents a significant advancement in motorcycle safety technology, providing a comprehensive 
+                    digital identity solution that bridges the gap between everyday convenience and emergency preparedness.
+                </p>
+                <p style="margin-bottom: 2rem;">
+                    The system's innovative approach to QR code management demonstrates practical application of modern web 
+                    development principles, creating a scalable solution that enhances rider safety across Malaysia.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 4rem;">
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #4ecdc4;">100%</div>
+                        <div style="opacity: 0.9;">Mobile Responsive</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #4ecdc4;">24/7</div>
+                        <div style="opacity: 0.9;">Emergency Access</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: #4ecdc4;">∞</div>
+                        <div style="opacity: 0.9;">Scalable Design</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Modal for image viewing -->
-    <div class="modal" id="imageModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <img id="modalImage" class="modal-image" src="" alt="Project screenshot">
-        </div>
-    </div>
+    </section>
 
     <script>
-        // Modal functionality
-        const projectCards = document.querySelectorAll('.project-card');
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModal = document.getElementById('closeModal');
-
-        projectCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const imageSrc = card.getAttribute('data-image');
-                const imageAlt = card.querySelector('.project-image').getAttribute('alt');
-                modalImage.src = imageSrc;
-                modalImage.alt = imageAlt;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+        // Smooth scrolling for CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#features').scrollIntoView({
+                behavior: 'smooth'
             });
         });
 
-        // Close modal functionality
-        const closeModalFunction = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        closeModal.addEventListener('click', closeModalFunction);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModalFunction();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModalFunction();
-            }
-        });
-
-        // Smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
